@@ -1,0 +1,2 @@
+# curequickly
+Flutter Application
