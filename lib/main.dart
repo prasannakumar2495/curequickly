@@ -17,6 +17,31 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Flutter Expense Chart'),
         ),
+        body: Container(
+          child: Row(
+            children: <Widget>[
+              Center(
+                child: Container(
+                  padding: EdgeInsets.all(50),
+                  width: 400,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Mobile Number',
+                    ),
+                  ),
+                ),
+              ),
+              /*Container(
+                child: Image.asset(
+                  'images/image1.png',
+                  fit: BoxFit.cover,
+                ),
+              )*/
+            ],
+          ),
+        ),
       ),
     );
   }
