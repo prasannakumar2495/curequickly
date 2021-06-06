@@ -17,28 +17,62 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Flutter Expense Chart'),
         ),
-        body: Container(
-          child: Row(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Center(
-                child: Container(
-                  padding: EdgeInsets.all(50),
-                  width: 400,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter Mobile Number',
-                    ),
-                  ),
-                ),
-              ),
               /*Container(
                 child: Image.asset(
                   'images/image1.png',
                   fit: BoxFit.cover,
                 ),
               )*/
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 400,
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter Mobile Number',
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 400,
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter Password',
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Submit'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueAccent,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Flexible(
+                    child: Text('Don\'t have an Account?'),
+                    flex: 1,
+                  ),
+                  Flexible(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Sign UP'),
+                    ),
+                    flex: 1,
+                  ),
+                ],
+              )
             ],
           ),
         ),
