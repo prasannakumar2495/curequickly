@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
+          children: [
             Container(
               height: 200,
               decoration: BoxDecoration(
@@ -79,26 +79,20 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Flexible(
-                  child: Text('Don\'t have an Account?'),
-                  flex: 1,
-                ),
-                Flexible(
-                  child: TextButton(
-                    child: Text('SIGN UP'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUp(),
-                        ),
-                      );
-                    },
-                  ),
-                  flex: 1,
+                Text('Don\'t have an Account?'),
+                TextButton(
+                  child: Text('SIGN UP'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUp(),
+                      ),
+                    );
+                  },
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
