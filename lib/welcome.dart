@@ -6,6 +6,16 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        leading: BackButton(
+          color: Theme.of(context).primaryColor,
+        ),
+        backgroundColor: Colors.white,
+        title: Text(
+          'CURE QUICKLY',
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        ),
+      ),
       body: SafeArea(
         minimum: EdgeInsets.all(10),
         child: Container(
@@ -13,16 +23,15 @@ class Welcome extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'Welcome',
-                style: TextStyle(
-                  fontSize: 64,
+              Align(
+                alignment: Alignment.topRight,
+                child: Text(
+                  'Hello, LOGGED IN USER.',
+                  style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                  ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Text('Hello'),
               SizedBox(
                 height: 10,
               ),
@@ -50,7 +59,8 @@ class Welcome extends StatelessWidget {
               ),
               Text(
                 'Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. \nMost people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment.  Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.',
-                textAlign: TextAlign.justify,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18),
               ),
               SizedBox(
                 height: 10,
@@ -59,7 +69,7 @@ class Welcome extends StatelessWidget {
                 'Please click on the below button to take the survey',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.blueGrey,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(
@@ -68,6 +78,9 @@ class Welcome extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).primaryColor,
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
