@@ -19,10 +19,12 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
     ]);
     return MaterialApp(
-        home: HomePage(),
-        theme: ThemeData(
-          primaryColor: Colors.deepPurple[900],
-          primaryColorLight: Colors.white,
-        ));
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+      theme: ThemeData(
+        primaryColor: Colors.deepPurple[900],
+        primaryColorLight: Colors.white,
+      ),
+    );
   }
 }

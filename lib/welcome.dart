@@ -7,13 +7,16 @@ class Welcome extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        centerTitle: true,
         leading: BackButton(
           color: Theme.of(context).primaryColor,
         ),
         backgroundColor: Colors.white,
         title: Text(
           'CURE QUICKLY',
-          style: TextStyle(color: Theme.of(context).primaryColor),
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+          ),
         ),
       ),
       body: SafeArea(
@@ -36,7 +39,7 @@ class Welcome extends StatelessWidget {
                 height: 10,
               ),
               Container(
-                height: 200,
+                height: MediaQuery.of(context).size.height * 0.3,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -60,7 +63,7 @@ class Welcome extends StatelessWidget {
               Text(
                 'Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. \nMost people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment.  Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
               ),
               SizedBox(
                 height: 10,

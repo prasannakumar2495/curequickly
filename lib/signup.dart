@@ -1,12 +1,11 @@
 import 'package:curequickly/homepage.dart';
-import 'package:curequickly/welcome.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         minimum: EdgeInsets.all(10),
         child: Container(
@@ -17,7 +16,7 @@ class SignUp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: MediaQuery.of(context).size.height * 0.25,
                 margin: EdgeInsets.only(
                   bottom: 10,
                 ),
@@ -36,53 +35,95 @@ class SignUp extends StatelessWidget {
                     runSpacing: 5,
                     children: <Widget>[
                       TextField(
+                        cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                          border: UnderlineInputBorder(),
                           hintText: 'Enter First Name',
                         ),
                       ),
                       TextField(
+                        cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                          border: UnderlineInputBorder(),
                           hintText: 'Enter Last Name',
                         ),
                       ),
                       TextField(
+                        cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                          border: UnderlineInputBorder(),
                           hintText: 'Enter Mobile Number',
                         ),
                       ),
                       TextField(
+                        cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                          border: UnderlineInputBorder(),
                           hintText: 'Enter Email ID',
                         ),
                       ),
                       TextField(
+                        cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                          border: UnderlineInputBorder(),
                           hintText: 'Enter Govt ID',
                         ),
                       ),
                       TextField(
+                        cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                          border: UnderlineInputBorder(),
                           hintText: 'Enter Password',
                         ),
                       ),
                       TextField(
+                        cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                          border: UnderlineInputBorder(),
                           hintText: 'Conform Password',
                         ),
                       ),
@@ -96,7 +137,7 @@ class SignUp extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Welcome(),
+                                builder: (context) => HomePage(),
                               ),
                             );
                           },

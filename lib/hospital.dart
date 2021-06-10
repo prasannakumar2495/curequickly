@@ -5,6 +5,7 @@ class Hospital extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leading: BackButton(
           color: Theme.of(context).primaryColor,
         ),

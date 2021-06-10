@@ -48,8 +48,8 @@ class _SurveyState extends State<Survey> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        centerTitle: true,
         leading: BackButton(
           color: Theme.of(context).primaryColor,
         ),
@@ -62,12 +62,13 @@ class _SurveyState extends State<Survey> {
       body: SafeArea(
         minimum: EdgeInsets.all(10),
         child: Container(
-          //height: MediaQuery.of(context).size.height,
+          height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 200,
+                height: MediaQuery.of(context).size.height * 0.2,
                 margin: EdgeInsets.only(bottom: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -86,22 +87,25 @@ class _SurveyState extends State<Survey> {
                         'Please complete the following survey and select the appropriate answers based on your symptoms. We will tell you whether you have the change of having COVID 19 or not based on the options that you have selected.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                          fontStyle: FontStyle.italic,
                           fontSize: 20,
                         ),
                       ),
-                      Text(
-                        'Do you have the following symptoms?',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Do you have the following symptoms?',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            width: 100,
+                            width: MediaQuery.of(context).size.width * 0.2,
                             child: Text(
                               'Cold',
                               textAlign: TextAlign.center,
@@ -142,10 +146,10 @@ class _SurveyState extends State<Survey> {
                         ],
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            width: 100,
+                            width: MediaQuery.of(context).size.width * 0.2,
                             child: Text(
                               'Fever',
                               textAlign: TextAlign.center,
@@ -186,10 +190,10 @@ class _SurveyState extends State<Survey> {
                         ],
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            width: 100,
+                            width: MediaQuery.of(context).size.width * 0.2,
                             child: Text(
                               'Cough',
                               textAlign: TextAlign.center,
@@ -230,10 +234,10 @@ class _SurveyState extends State<Survey> {
                         ],
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            width: 100,
+                            width: MediaQuery.of(context).size.width * 0.2,
                             child: Text(
                               'Body Pains',
                               textAlign: TextAlign.center,

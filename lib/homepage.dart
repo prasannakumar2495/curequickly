@@ -7,6 +7,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //use the below line, to avoid keyboard covering the textfields.
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         minimum: EdgeInsets.all(10),
         child: SingleChildScrollView(
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
-                  height: 300,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   margin: EdgeInsets.only(bottom: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -33,13 +35,21 @@ class HomePage extends StatelessWidget {
                     bottom: 5,
                   ),
                   child: TextField(
+                    cursorColor: Theme.of(context).primaryColor,
                     keyboardType: TextInputType.phone,
                     textAlign: TextAlign.center,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
                       hintText: 'Enter Mobile Number',
                     ),
                   ),
@@ -50,10 +60,16 @@ class HomePage extends StatelessWidget {
                     bottom: 5,
                   ),
                   child: TextField(
+                    cursorColor: Theme.of(context).primaryColor,
                     keyboardType: TextInputType.text,
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      border: UnderlineInputBorder(),
                       hintText: 'Enter Password',
                     ),
                   ),
