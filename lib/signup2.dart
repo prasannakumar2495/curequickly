@@ -2,9 +2,23 @@ import 'package:curequickly/homepage.dart';
 import 'package:curequickly/signup3.dart';
 import 'package:flutter/material.dart';
 
-class SignUp2 extends StatelessWidget {
+import 'methods/inputdata.dart';
+
+class SignUp2 extends StatefulWidget {
+  //final List<InputData> inputData;
+
+  //const SignUp2({Key key, this.inputData}) : super(key: key);
+  @override
+  _SignUp2State createState() => _SignUp2State();
+}
+
+class _SignUp2State extends State<SignUp2> {
+  final inputData = InputData();
+
   @override
   Widget build(BuildContext context) {
+    final _mobileNumber = TextEditingController();
+    final _emailId = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -59,6 +73,7 @@ class SignUp2 extends StatelessWidget {
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Mobile Number',
                         ),
+                        controller: _mobileNumber,
                       ),
                       TextField(
                         cursorColor: Theme.of(context).primaryColor,
@@ -73,6 +88,7 @@ class SignUp2 extends StatelessWidget {
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Email ID',
                         ),
+                        controller: _emailId,
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
@@ -87,6 +103,16 @@ class SignUp2 extends StatelessWidget {
                                 builder: (context) => SignUp3(),
                               ),
                             );
+                            // InputData(
+                            //     mobileNumber: _mobileNumber.text,
+                            //     emailId: _emailId.text);
+
+                            inputData.mobileNumber =
+                                int.parse(_mobileNumber.text);
+                            inputData.emailId = _emailId.text;
+
+                            print(
+                                '${inputData.firstName},${inputData.lastName}, ${inputData.mobileNumber}');
                           },
                           child: Text('NEXT'),
                         ),

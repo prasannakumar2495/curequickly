@@ -2,10 +2,17 @@ import 'package:curequickly/signup1.dart';
 import 'package:curequickly/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:curequickly/methods/inputdata.dart';
 
 class HomePage extends StatelessWidget {
+  //final List<InputData> inputData;
+
+  // const HomePage({Key key, this.inputData}) : super(key: key);
+  final inputData = InputData();
   @override
   Widget build(BuildContext context) {
+    final _uMobileNumber = TextEditingController();
+    final _uPassword = TextEditingController();
     return Scaffold(
       //use the below line, to avoid keyboard covering the textfields.
       resizeToAvoidBottomInset: true,
@@ -52,6 +59,7 @@ class HomePage extends StatelessWidget {
                       ),
                       hintText: 'Enter Registered Mobile Number',
                     ),
+                    controller: _uMobileNumber,
                   ),
                 ),
                 Container(
@@ -72,16 +80,22 @@ class HomePage extends StatelessWidget {
                       border: UnderlineInputBorder(),
                       hintText: 'Enter Password',
                     ),
+                    controller: _uPassword,
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Welcome(),
-                      ),
-                    );
+                    if (inputData.mobileNumber ==
+                            int.parse(_uMobileNumber.text) &&
+                        inputData.conformPassword == _uPassword.text) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Welcome(),
+                        ),
+                      );
+                    }
+                    print('${inputData.mobileNumber} , ${_uMobileNumber.text}');
                   },
                   child: Text('SIGN IN'),
                   style: ElevatedButton.styleFrom(

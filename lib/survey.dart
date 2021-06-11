@@ -1,3 +1,4 @@
+import 'package:curequickly/negative.dart';
 import 'package:curequickly/positive.dart';
 import 'package:flutter/material.dart';
 
@@ -279,12 +280,30 @@ class _SurveyState extends State<Survey> {
                         width: MediaQuery.of(context).size.width,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Positive(),
-                              ),
-                            );
+                            if ((selectRadioButton1 != 0) &&
+                                (selectRadioButton2 != 0) &&
+                                (selectRadioButton3 != 0) &&
+                                (selectRadioButton4 != 0)) {
+                              if ((selectRadioButton1 +
+                                      selectRadioButton2 +
+                                      selectRadioButton3 +
+                                      selectRadioButton4) <=
+                                  8) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Positive(),
+                                  ),
+                                );
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Negative(),
+                                  ),
+                                );
+                              }
+                            }
                           },
                           child: Text('SUBMIT'),
                           style: ElevatedButton.styleFrom(

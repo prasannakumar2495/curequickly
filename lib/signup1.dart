@@ -1,8 +1,21 @@
 import 'package:curequickly/homepage.dart';
+import 'package:curequickly/methods/inputdata.dart';
 import 'package:curequickly/signup2.dart';
 import 'package:flutter/material.dart';
 
-class SignUp1 extends StatelessWidget {
+class SignUp1 extends StatefulWidget {
+  //SignUp1({Key key, this.inputData}) : super(key: key);
+
+  @override
+  _SignUp1State createState() => _SignUp1State();
+}
+
+class _SignUp1State extends State<SignUp1> {
+  final inputData = InputData();
+  final _firstName = TextEditingController();
+
+  final _lastName = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +62,7 @@ class SignUp1 extends StatelessWidget {
                       TextField(
                         cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
+                        keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
@@ -58,10 +72,12 @@ class SignUp1 extends StatelessWidget {
                           border: UnderlineInputBorder(),
                           hintText: 'Enter First Name',
                         ),
+                        controller: _firstName,
                       ),
                       TextField(
                         cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
@@ -71,6 +87,7 @@ class SignUp1 extends StatelessWidget {
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Last Name',
                         ),
+                        controller: _lastName,
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
@@ -85,6 +102,15 @@ class SignUp1 extends StatelessWidget {
                                 builder: (context) => SignUp2(),
                               ),
                             );
+                            // InputData(
+                            //     mobileNumber: _mobileNumber.text,
+                            //     emailId: _emailId.text);
+
+                            inputData.mobileNumber = int.parse(_firstName.text);
+                            inputData.emailId = _lastName.text;
+
+                            print(
+                                '${inputData.firstName},${inputData.lastName}, ${inputData.mobileNumber}');
                           },
                           child: Text('NEXT'),
                         ),

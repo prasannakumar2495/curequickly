@@ -1,5 +1,4 @@
 import 'package:curequickly/homepage.dart';
-import 'package:curequickly/negative.dart';
 import 'package:flutter/material.dart';
 
 class Hospital extends StatelessWidget {
@@ -123,7 +122,7 @@ class Hospital extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Negative(),
+                            builder: (context) => HomePage(),
                           ),
                         );
                       },

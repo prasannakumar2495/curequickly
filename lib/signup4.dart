@@ -1,9 +1,23 @@
 import 'package:curequickly/homepage.dart';
 import 'package:flutter/material.dart';
 
-class SignUp4 extends StatelessWidget {
+import 'methods/inputdata.dart';
+
+class SignUp4 extends StatefulWidget {
+  //final List<InputData> inputData;
+
+  //const SignUp4({Key key, this.inputData}) : super(key: key);
+  @override
+  _SignUp4State createState() => _SignUp4State();
+}
+
+class _SignUp4State extends State<SignUp4> {
+  final inputData = InputData();
+
   @override
   Widget build(BuildContext context) {
+    final _password = TextEditingController();
+    final _conformPassword = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -57,6 +71,8 @@ class SignUp4 extends StatelessWidget {
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Password',
                         ),
+                        controller: _password,
+                        obscureText: true,
                       ),
                       TextField(
                         cursorColor: Theme.of(context).primaryColor,
@@ -70,6 +86,8 @@ class SignUp4 extends StatelessWidget {
                           border: UnderlineInputBorder(),
                           hintText: 'Conform Password',
                         ),
+                        obscureText: true,
+                        controller: _conformPassword,
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
@@ -84,6 +102,13 @@ class SignUp4 extends StatelessWidget {
                                 builder: (context) => HomePage(),
                               ),
                             );
+                            // InputData(
+                            //   password: _password.text,
+                            //   conformPassword: _conformPassword.text,
+                            // );
+
+                            inputData.password = _password.text;
+                            inputData.conformPassword = _conformPassword.text;
                           },
                           child: Text('SIGN UP'),
                         ),

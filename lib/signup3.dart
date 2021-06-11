@@ -1,10 +1,22 @@
 import 'package:curequickly/homepage.dart';
+import 'package:curequickly/methods/inputdata.dart';
 import 'package:curequickly/signup4.dart';
 import 'package:flutter/material.dart';
 
-class SignUp3 extends StatelessWidget {
+class SignUp3 extends StatefulWidget {
+  //final List<InputData> inputData;
+
+  //const SignUp3({Key key, this.inputData}) : super(key: key);
+  @override
+  _SignUp3State createState() => _SignUp3State();
+}
+
+class _SignUp3State extends State<SignUp3> {
+  final inputData = InputData();
+
   @override
   Widget build(BuildContext context) {
+    final _govtId = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -58,6 +70,7 @@ class SignUp3 extends StatelessWidget {
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Govt ID',
                         ),
+                        controller: _govtId,
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
@@ -72,6 +85,11 @@ class SignUp3 extends StatelessWidget {
                                 builder: (context) => SignUp4(),
                               ),
                             );
+                            // InputData(
+                            //   govtId: _govtId.text,
+                            // );
+
+                            inputData.govtId = _govtId.text;
                           },
                           child: Text('NEXT'),
                         ),
