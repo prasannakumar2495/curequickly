@@ -37,7 +37,7 @@ class Positive extends StatelessWidget {
                 ),
               ),
               Text(
-                'As you are having symptoms of COVID 19, we recommend you to take a COVID test as soon as possible in order to reduce the risk on you body and also to eleminate the risk of transmission. We insist you to follow the following safety precautions.',
+                'Because you have COVID 19 symptoms, we recommend that you have a COVID test as soon as possible to decrease the risk to your body and eliminate the chance of transmission. We strongly advise you to adhere to the following safety measures.',
                 textAlign: TextAlign.center,
               ),
               Flexible(

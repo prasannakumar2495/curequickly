@@ -14,11 +14,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    //the below code will not allow the orientation to be landscape.
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
     return MaterialApp(
+      //the below code is to remove the debug label in the application top right corner.
       debugShowCheckedModeBanner: false,
       home: HomePage(),
       theme: ThemeData(

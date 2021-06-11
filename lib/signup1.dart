@@ -1,11 +1,23 @@
 import 'package:curequickly/homepage.dart';
+import 'package:curequickly/signup2.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        centerTitle: true,
+        leading: BackButton(
+          color: Theme.of(context).primaryColor,
+        ),
+        backgroundColor: Colors.white,
+        title: Text(
+          'CURE QUICKLY',
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        ),
+      ),
       body: SafeArea(
         minimum: EdgeInsets.all(10),
         child: Container(
@@ -60,73 +72,6 @@ class SignUp extends StatelessWidget {
                           hintText: 'Enter Last Name',
                         ),
                       ),
-                      TextField(
-                        cursorColor: Theme.of(context).primaryColor,
-                        textAlign: TextAlign.center,
-                        keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          border: UnderlineInputBorder(),
-                          hintText: 'Enter Mobile Number',
-                        ),
-                      ),
-                      TextField(
-                        cursorColor: Theme.of(context).primaryColor,
-                        textAlign: TextAlign.center,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          border: UnderlineInputBorder(),
-                          hintText: 'Enter Email ID',
-                        ),
-                      ),
-                      TextField(
-                        cursorColor: Theme.of(context).primaryColor,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          border: UnderlineInputBorder(),
-                          hintText: 'Enter Govt ID',
-                        ),
-                      ),
-                      TextField(
-                        cursorColor: Theme.of(context).primaryColor,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          border: UnderlineInputBorder(),
-                          hintText: 'Enter Password',
-                        ),
-                      ),
-                      TextField(
-                        cursorColor: Theme.of(context).primaryColor,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          border: UnderlineInputBorder(),
-                          hintText: 'Conform Password',
-                        ),
-                      ),
                       Container(
                         width: MediaQuery.of(context).size.width,
                         child: ElevatedButton(
@@ -137,11 +82,11 @@ class SignUp extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HomePage(),
+                                builder: (context) => SignUp2(),
                               ),
                             );
                           },
-                          child: Text('SIGN UP'),
+                          child: Text('NEXT'),
                         ),
                       ),
                       Row(

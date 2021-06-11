@@ -91,14 +91,12 @@ class _SurveyState extends State<Survey> {
                           fontSize: 20,
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Do you have the following symptoms?',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      Text(
+                        'Do you have the following symptoms?',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Row(

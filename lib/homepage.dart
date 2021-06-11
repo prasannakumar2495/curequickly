@@ -1,4 +1,4 @@
-import 'package:curequickly/signup.dart';
+import 'package:curequickly/signup1.dart';
 import 'package:curequickly/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                           color: Theme.of(context).primaryColor,
                         ),
                       ),
-                      hintText: 'Enter Mobile Number',
+                      hintText: 'Enter Registered Mobile Number',
                     ),
                   ),
                 ),
@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SignUp(),
+                            builder: (context) => SignUp1(),
                           ),
                         );
                       },
