@@ -109,6 +109,9 @@ class _SignUp4State extends State<SignUp4> {
 
                             inputData.password = _password.text;
                             inputData.conformPassword = _conformPassword.text;
+                            print(
+                              '${inputData.firstName},${inputData.lastName}, ${inputData.mobileNumber},${inputData.emailId},${inputData.govtId},${inputData.password},${inputData.conformPassword}',
+                            );
                           },
                           child: Text('SIGN UP'),
                         ),

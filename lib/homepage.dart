@@ -4,11 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:curequickly/methods/inputdata.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   //final List<InputData> inputData;
 
   // const HomePage({Key key, this.inputData}) : super(key: key);
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final inputData = InputData();
+
   @override
   Widget build(BuildContext context) {
     final _uMobileNumber = TextEditingController();

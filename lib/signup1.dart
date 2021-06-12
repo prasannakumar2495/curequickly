@@ -4,17 +4,22 @@ import 'package:curequickly/signup2.dart';
 import 'package:flutter/material.dart';
 
 class SignUp1 extends StatefulWidget {
-  //SignUp1({Key key, this.inputData}) : super(key: key);
-
   @override
   _SignUp1State createState() => _SignUp1State();
 }
 
 class _SignUp1State extends State<SignUp1> {
-  final inputData = InputData();
-  final _firstName = TextEditingController();
+  InputData _inputData = InputData();
 
-  final _lastName = TextEditingController();
+  var _firstName = TextEditingController();
+  var _lastName = TextEditingController();
+
+  void pn() {
+    setState(() {
+      _inputData.firstName = _firstName.text;
+      _inputData.lastName = _lastName.text;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,15 +107,12 @@ class _SignUp1State extends State<SignUp1> {
                                 builder: (context) => SignUp2(),
                               ),
                             );
-                            // InputData(
-                            //     mobileNumber: _mobileNumber.text,
-                            //     emailId: _emailId.text);
-
-                            inputData.mobileNumber = int.parse(_firstName.text);
-                            inputData.emailId = _lastName.text;
-
+                            // _inputData.firstName = _firstName.text;
+                            // _inputData.lastName = _lastName.text;
+                            pn();
                             print(
-                                '${inputData.firstName},${inputData.lastName}, ${inputData.mobileNumber}');
+                              'The first name is: ${_inputData.firstName}, The last name is: ${_inputData.lastName}',
+                            );
                           },
                           child: Text('NEXT'),
                         ),

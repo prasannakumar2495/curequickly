@@ -90,6 +90,9 @@ class _SignUp3State extends State<SignUp3> {
                             // );
 
                             inputData.govtId = _govtId.text;
+                            print(
+                              '${inputData.firstName},${inputData.lastName}, ${inputData.mobileNumber},${inputData.emailId},${inputData.govtId}',
+                            );
                           },
                           child: Text('NEXT'),
                         ),

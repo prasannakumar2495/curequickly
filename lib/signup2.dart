@@ -13,12 +13,11 @@ class SignUp2 extends StatefulWidget {
 }
 
 class _SignUp2State extends State<SignUp2> {
-  final inputData = InputData();
-
+  InputData _inputData = InputData();
+  final _mobileNumber = TextEditingController();
+  final _emailId = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final _mobileNumber = TextEditingController();
-    final _emailId = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -107,12 +106,13 @@ class _SignUp2State extends State<SignUp2> {
                             //     mobileNumber: _mobileNumber.text,
                             //     emailId: _emailId.text);
 
-                            inputData.mobileNumber =
+                            _inputData.mobileNumber =
                                 int.parse(_mobileNumber.text);
-                            inputData.emailId = _emailId.text;
+                            _inputData.emailId = _emailId.text;
 
                             print(
-                                '${inputData.firstName},${inputData.lastName}, ${inputData.mobileNumber}');
+                              '${_inputData.firstName},${_inputData.lastName}, ${_inputData.mobileNumber},${_inputData.emailId}',
+                            );
                           },
                           child: Text('NEXT'),
                         ),
