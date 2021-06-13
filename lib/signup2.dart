@@ -1,13 +1,12 @@
 import 'package:curequickly/homepage.dart';
+import 'package:curequickly/methods/inputdata.dart';
 import 'package:curequickly/signup3.dart';
 import 'package:flutter/material.dart';
 
-import 'methods/inputdata.dart';
-
+// ignore: must_be_immutable
 class SignUp2 extends StatefulWidget {
-  //final List<InputData> inputData;
-
-  //const SignUp2({Key key, this.inputData}) : super(key: key);
+  InputData inputData = InputData();
+  SignUp2({this.inputData});
   @override
   _SignUp2State createState() => _SignUp2State();
 }
@@ -99,19 +98,21 @@ class _SignUp2State extends State<SignUp2> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => SignUp3(),
+                                builder: (context) => SignUp3(
+                                  inputData: InputData(
+                                    mobileNumber: int.parse(_mobileNumber.text),
+                                    emailId: _emailId.text,
+                                    firstName: widget.inputData.firstName,
+                                    lastName: widget.inputData.lastName,
+                                  ),
+                                ),
                               ),
                             );
-                            // InputData(
-                            //     mobileNumber: _mobileNumber.text,
-                            //     emailId: _emailId.text);
-
                             _inputData.mobileNumber =
                                 int.parse(_mobileNumber.text);
                             _inputData.emailId = _emailId.text;
-
                             print(
-                              '${_inputData.firstName},${_inputData.lastName}, ${_inputData.mobileNumber},${_inputData.emailId}',
+                              '${widget.inputData.firstName},${widget.inputData.lastName},${_inputData.mobileNumber},${_inputData.emailId}',
                             );
                           },
                           child: Text('NEXT'),

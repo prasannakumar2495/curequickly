@@ -1,25 +1,22 @@
-import 'package:curequickly/homepage.dart';
 import 'package:curequickly/methods/inputdata.dart';
 import 'package:curequickly/signup2.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SignUp1 extends StatefulWidget {
+  InputData inputData = InputData();
+
+  SignUp1({this.inputData});
+
   @override
   _SignUp1State createState() => _SignUp1State();
 }
 
 class _SignUp1State extends State<SignUp1> {
   InputData _inputData = InputData();
+  final _firstName = TextEditingController();
 
-  var _firstName = TextEditingController();
-  var _lastName = TextEditingController();
-
-  void pn() {
-    setState(() {
-      _inputData.firstName = _firstName.text;
-      _inputData.lastName = _lastName.text;
-    });
-  }
+  final _lastName = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -104,14 +101,18 @@ class _SignUp1State extends State<SignUp1> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => SignUp2(),
+                                builder: (context) => SignUp2(
+                                  inputData: InputData(
+                                    firstName: _firstName.text,
+                                    lastName: _lastName.text,
+                                  ),
+                                ),
                               ),
                             );
-                            // _inputData.firstName = _firstName.text;
-                            // _inputData.lastName = _lastName.text;
-                            pn();
+                            _inputData.firstName = _firstName.text;
+                            _inputData.lastName = _lastName.text;
                             print(
-                              'The first name is: ${_inputData.firstName}, The last name is: ${_inputData.lastName}',
+                              '${_inputData.firstName},${_inputData.lastName}',
                             );
                           },
                           child: Text('NEXT'),
@@ -126,12 +127,7 @@ class _SignUp1State extends State<SignUp1> {
                               primary: Theme.of(context).primaryColor,
                             ),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => HomePage(),
-                                ),
-                              );
+                              Navigator.pop(context);
                             },
                             child: Text('SIGN IN'),
                           ),

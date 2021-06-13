@@ -3,20 +3,19 @@ import 'package:curequickly/methods/inputdata.dart';
 import 'package:curequickly/signup4.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SignUp3 extends StatefulWidget {
-  //final List<InputData> inputData;
-
-  //const SignUp3({Key key, this.inputData}) : super(key: key);
+  InputData inputData = InputData();
+  SignUp3({this.inputData});
   @override
   _SignUp3State createState() => _SignUp3State();
 }
 
 class _SignUp3State extends State<SignUp3> {
-  final inputData = InputData();
-
+  InputData _inputData = InputData();
+  final _govtId = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final _govtId = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -82,16 +81,19 @@ class _SignUp3State extends State<SignUp3> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => SignUp4(),
+                                builder: (context) => SignUp4(
+                                    inputData: InputData(
+                                  govtId: _govtId.text,
+                                  mobileNumber: widget.inputData.mobileNumber,
+                                  emailId: widget.inputData.emailId,
+                                  firstName: widget.inputData.firstName,
+                                  lastName: widget.inputData.lastName,
+                                )),
                               ),
                             );
-                            // InputData(
-                            //   govtId: _govtId.text,
-                            // );
-
-                            inputData.govtId = _govtId.text;
+                            _inputData.govtId = _govtId.text;
                             print(
-                              '${inputData.firstName},${inputData.lastName}, ${inputData.mobileNumber},${inputData.emailId},${inputData.govtId}',
+                              '${widget.inputData.firstName},${widget.inputData.lastName},${widget.inputData.mobileNumber},${widget.inputData.emailId}, ${_inputData.govtId}',
                             );
                           },
                           child: Text('NEXT'),

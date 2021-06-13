@@ -1,24 +1,23 @@
+import 'package:curequickly/methods/inputdata.dart';
 import 'package:curequickly/signup1.dart';
 import 'package:curequickly/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:curequickly/methods/inputdata.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatefulWidget {
-  //final List<InputData> inputData;
-
-  // const HomePage({Key key, this.inputData}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
+  InputData inputData = InputData();
+  HomePage({this.inputData});
 }
 
 class _HomePageState extends State<HomePage> {
-  final inputData = InputData();
+  final _uMobileNumber = TextEditingController();
+  final _uPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final _uMobileNumber = TextEditingController();
-    final _uPassword = TextEditingController();
     return Scaffold(
       //use the below line, to avoid keyboard covering the textfields.
       resizeToAvoidBottomInset: true,
@@ -91,9 +90,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (inputData.mobileNumber ==
-                            int.parse(_uMobileNumber.text) &&
-                        inputData.conformPassword == _uPassword.text) {
+                    // ignore: unrelated_type_equality_checks
+                    if ((int.parse(_uMobileNumber.text) ==
+                            widget.inputData.mobileNumber) &&
+                        // ignore: unrelated_type_equality_checks
+                        (_uPassword.text == widget.inputData.conformPassword)) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -101,7 +102,10 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     }
-                    print('${inputData.mobileNumber} , ${_uMobileNumber.text}');
+
+                    print(
+                      '${widget.inputData.mobileNumber},${widget.inputData.conformPassword}',
+                    );
                   },
                   child: Text('SIGN IN'),
                   style: ElevatedButton.styleFrom(

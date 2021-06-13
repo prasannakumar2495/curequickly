@@ -1,23 +1,21 @@
 import 'package:curequickly/homepage.dart';
+import 'package:curequickly/methods/inputdata.dart';
 import 'package:flutter/material.dart';
 
-import 'methods/inputdata.dart';
-
+// ignore: must_be_immutable
 class SignUp4 extends StatefulWidget {
-  //final List<InputData> inputData;
-
-  //const SignUp4({Key key, this.inputData}) : super(key: key);
   @override
   _SignUp4State createState() => _SignUp4State();
+  InputData inputData = InputData();
+  SignUp4({this.inputData});
 }
 
 class _SignUp4State extends State<SignUp4> {
-  final inputData = InputData();
-
+  InputData _inputData = InputData();
+  final _password = TextEditingController();
+  final _conformPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final _password = TextEditingController();
-    final _conformPassword = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -71,8 +69,8 @@ class _SignUp4State extends State<SignUp4> {
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Password',
                         ),
-                        controller: _password,
                         obscureText: true,
+                        controller: _password,
                       ),
                       TextField(
                         cursorColor: Theme.of(context).primaryColor,
@@ -99,18 +97,23 @@ class _SignUp4State extends State<SignUp4> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HomePage(),
+                                builder: (context) => HomePage(
+                                  inputData: InputData(
+                                    govtId: widget.inputData.govtId,
+                                    mobileNumber: widget.inputData.mobileNumber,
+                                    emailId: widget.inputData.emailId,
+                                    firstName: widget.inputData.firstName,
+                                    lastName: widget.inputData.lastName,
+                                    password: _password.text,
+                                    conformPassword: _conformPassword.text,
+                                  ),
+                                ),
                               ),
                             );
-                            // InputData(
-                            //   password: _password.text,
-                            //   conformPassword: _conformPassword.text,
-                            // );
-
-                            inputData.password = _password.text;
-                            inputData.conformPassword = _conformPassword.text;
+                            _inputData.password = _password.text;
+                            _inputData.conformPassword = _conformPassword.text;
                             print(
-                              '${inputData.firstName},${inputData.lastName}, ${inputData.mobileNumber},${inputData.emailId},${inputData.govtId},${inputData.password},${inputData.conformPassword}',
+                              '${widget.inputData.firstName},${widget.inputData.lastName},${widget.inputData.mobileNumber},${widget.inputData.emailId},${widget.inputData.govtId}, ${_inputData.password},${_inputData.conformPassword}',
                             );
                           },
                           child: Text('SIGN UP'),
