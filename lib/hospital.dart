@@ -125,6 +125,14 @@ class Hospital extends StatelessWidget {
                             builder: (context) => HomePage(),
                           ),
                         );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Succesfully Logged Out'),
+                            duration: Duration(
+                              seconds: 2,
+                            ),
+                          ),
+                        );
                       },
                       child: Text(
                         'SIGN OUT',

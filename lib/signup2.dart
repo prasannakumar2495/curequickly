@@ -15,6 +15,13 @@ class _SignUp2State extends State<SignUp2> {
   InputData _inputData = InputData();
   final _mobileNumber = TextEditingController();
   final _emailId = TextEditingController();
+  bool validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    return (!regex.hasMatch(value)) ? false : true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +77,10 @@ class _SignUp2State extends State<SignUp2> {
                           ),
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Mobile Number',
+                          suffixIcon: Icon(
+                            Icons.phone,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         controller: _mobileNumber,
                       ),
@@ -85,6 +96,10 @@ class _SignUp2State extends State<SignUp2> {
                           ),
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Email ID',
+                          suffixIcon: Icon(
+                            Icons.email,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         controller: _emailId,
                       ),
@@ -95,19 +110,40 @@ class _SignUp2State extends State<SignUp2> {
                             primary: Theme.of(context).primaryColor,
                           ),
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignUp3(
-                                  inputData: InputData(
-                                    mobileNumber: int.parse(_mobileNumber.text),
-                                    emailId: _emailId.text,
-                                    firstName: widget.inputData.firstName,
-                                    lastName: widget.inputData.lastName,
+                            if ((_mobileNumber.text.length == 10) &&
+                                validateEmail(_emailId.text)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignUp3(
+                                    inputData: InputData(
+                                      mobileNumber:
+                                          int.parse(_mobileNumber.text),
+                                      emailId: _emailId.text,
+                                      firstName: widget.inputData.firstName,
+                                      lastName: widget.inputData.lastName,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please enter following data!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please enter valid details!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
+                                ),
+                              );
+                            }
                             _inputData.mobileNumber =
                                 int.parse(_mobileNumber.text);
                             _inputData.emailId = _emailId.text;
@@ -131,6 +167,14 @@ class _SignUp2State extends State<SignUp2> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => HomePage(),
+                                ),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please enter Login Details!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
                                 ),
                               );
                             },

@@ -303,6 +303,15 @@ class _SurveyState extends State<Survey> {
                                   ),
                                 );
                               }
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please complete the survey!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
+                                ),
+                              );
                             }
                           },
                           child: Text('SUBMIT'),

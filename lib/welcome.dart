@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import './survey.dart';
 
-class Welcome extends StatelessWidget {
+// ignore: must_be_immutable
+class Welcome extends StatefulWidget {
+  @override
+  _WelcomeState createState() => _WelcomeState();
+}
+
+class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +35,7 @@ class Welcome extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: Text(
-                  'Hello, LOGGED IN USER.',
+                  'Hello, Logged in User',
                   style: TextStyle(
                     fontStyle: FontStyle.italic,
                   ),

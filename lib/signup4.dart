@@ -68,6 +68,10 @@ class _SignUp4State extends State<SignUp4> {
                           ),
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Password',
+                          suffixIcon: Icon(
+                            Icons.password,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         obscureText: true,
                         controller: _password,
@@ -83,6 +87,10 @@ class _SignUp4State extends State<SignUp4> {
                           ),
                           border: UnderlineInputBorder(),
                           hintText: 'Conform Password',
+                          suffixIcon: Icon(
+                            Icons.password,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         obscureText: true,
                         controller: _conformPassword,
@@ -94,22 +102,70 @@ class _SignUp4State extends State<SignUp4> {
                             primary: Theme.of(context).primaryColor,
                           ),
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomePage(
-                                  inputData: InputData(
-                                    govtId: widget.inputData.govtId,
-                                    mobileNumber: widget.inputData.mobileNumber,
-                                    emailId: widget.inputData.emailId,
-                                    firstName: widget.inputData.firstName,
-                                    lastName: widget.inputData.lastName,
-                                    password: _password.text,
-                                    conformPassword: _conformPassword.text,
+                            if ((0 < _conformPassword.text.length) &&
+                                (0 < _password.text.length)) {
+                              if ((_conformPassword.text.length >= 8) &&
+                                  (_password.text.length >= 8)) {
+                                if ((_conformPassword.text) ==
+                                    (_password.text)) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => HomePage(
+                                        inputData: InputData(
+                                          govtId: widget.inputData.govtId,
+                                          mobileNumber:
+                                              widget.inputData.mobileNumber,
+                                          emailId: widget.inputData.emailId,
+                                          firstName: widget.inputData.firstName,
+                                          lastName: widget.inputData.lastName,
+                                          password: _password.text,
+                                          conformPassword:
+                                              _conformPassword.text,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('Successful Sign Up!'),
+                                      duration: Duration(
+                                        seconds: 2,
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content:
+                                          Text('Please enter valid details!'),
+                                      duration: Duration(
+                                        seconds: 2,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content:
+                                        Text('Please enter valid details!'),
+                                    duration: Duration(
+                                      seconds: 2,
+                                    ),
+                                  ),
+                                );
+                              }
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please enter valid details!'),
+                                  duration: Duration(
+                                    seconds: 2,
                                   ),
                                 ),
-                              ),
-                            );
+                              );
+                            }
                             _inputData.password = _password.text;
                             _inputData.conformPassword = _conformPassword.text;
                             print(
@@ -132,6 +188,14 @@ class _SignUp4State extends State<SignUp4> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => HomePage(),
+                                ),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please enter Login Details!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
                                 ),
                               );
                             },

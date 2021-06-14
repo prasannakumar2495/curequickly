@@ -52,6 +52,11 @@ class Negative extends StatelessWidget {
                           builder: (context) => HomePage(),
                         ),
                       );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Succesfully Logged Out'),
+                        ),
+                      );
                     },
                     child: Text(
                       'SIGN OUT',

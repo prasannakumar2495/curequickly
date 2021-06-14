@@ -68,6 +68,10 @@ class _SignUp3State extends State<SignUp3> {
                           ),
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Govt ID',
+                          suffixIcon: Icon(
+                            Icons.card_membership,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         controller: _govtId,
                       ),
@@ -78,19 +82,39 @@ class _SignUp3State extends State<SignUp3> {
                             primary: Theme.of(context).primaryColor,
                           ),
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignUp4(
-                                    inputData: InputData(
-                                  govtId: _govtId.text,
-                                  mobileNumber: widget.inputData.mobileNumber,
-                                  emailId: widget.inputData.emailId,
-                                  firstName: widget.inputData.firstName,
-                                  lastName: widget.inputData.lastName,
-                                )),
-                              ),
-                            );
+                            if (_govtId.text.length > 0) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignUp4(
+                                      inputData: InputData(
+                                    govtId: _govtId.text,
+                                    mobileNumber: widget.inputData.mobileNumber,
+                                    emailId: widget.inputData.emailId,
+                                    firstName: widget.inputData.firstName,
+                                    lastName: widget.inputData.lastName,
+                                  )),
+                                ),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please enter following data!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                      'Please make sure Password and Conform Password are same'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
+                                ),
+                              );
+                            }
                             _inputData.govtId = _govtId.text;
                             print(
                               '${widget.inputData.firstName},${widget.inputData.lastName},${widget.inputData.mobileNumber},${widget.inputData.emailId}, ${_inputData.govtId}',
@@ -112,6 +136,14 @@ class _SignUp3State extends State<SignUp3> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => HomePage(),
+                                ),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please enter Login Details!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
                                 ),
                               );
                             },

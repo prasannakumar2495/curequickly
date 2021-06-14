@@ -73,6 +73,10 @@ class _SignUp1State extends State<SignUp1> {
                           ),
                           border: UnderlineInputBorder(),
                           hintText: 'Enter First Name',
+                          suffixIcon: Icon(
+                            Icons.person,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         controller: _firstName,
                       ),
@@ -88,6 +92,10 @@ class _SignUp1State extends State<SignUp1> {
                           ),
                           border: UnderlineInputBorder(),
                           hintText: 'Enter Last Name',
+                          suffixIcon: Icon(
+                            Icons.person,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         controller: _lastName,
                       ),
@@ -98,17 +106,38 @@ class _SignUp1State extends State<SignUp1> {
                             primary: Theme.of(context).primaryColor,
                           ),
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignUp2(
-                                  inputData: InputData(
-                                    firstName: _firstName.text,
-                                    lastName: _lastName.text,
+                            if ((_firstName.text.length > 0) &&
+                                (_lastName.text.length > 0)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignUp2(
+                                    inputData: InputData(
+                                      firstName: _firstName.text,
+                                      lastName: _lastName.text,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content:
+                                      Text('Please enter following details!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please enter valid details!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
+                                ),
+                              );
+                            }
                             _inputData.firstName = _firstName.text;
                             _inputData.lastName = _lastName.text;
                             print(
@@ -128,6 +157,14 @@ class _SignUp1State extends State<SignUp1> {
                             ),
                             onPressed: () {
                               Navigator.pop(context);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please enter Login Details!'),
+                                  duration: Duration(
+                                    seconds: 2,
+                                  ),
+                                ),
+                              );
                             },
                             child: Text('SIGN IN'),
                           ),

@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _uMobileNumber = TextEditingController();
   final _uPassword = TextEditingController();
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +55,10 @@ class _HomePageState extends State<HomePage> {
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                     decoration: InputDecoration(
+                      suffixIcon: Icon(
+                        Icons.phone,
+                        color: Theme.of(context).primaryColor,
+                      ),
                       border: UnderlineInputBorder(
                         borderSide: BorderSide(),
                       ),
@@ -73,6 +78,7 @@ class _HomePageState extends State<HomePage> {
                     bottom: 5,
                   ),
                   child: TextField(
+                    obscureText: _obscureText,
                     cursorColor: Theme.of(context).primaryColor,
                     keyboardType: TextInputType.text,
                     textAlign: TextAlign.center,
@@ -84,6 +90,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       border: UnderlineInputBorder(),
                       hintText: 'Enter Password',
+                      suffixIcon: Icon(
+                        Icons.password,
+                        color: Theme.of(context).primaryColor,
+                      ),
                     ),
                     controller: _uPassword,
                   ),
@@ -101,8 +111,25 @@ class _HomePageState extends State<HomePage> {
                           builder: (context) => Welcome(),
                         ),
                       );
-                    }
 
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Login Successful!'),
+                          duration: Duration(
+                            seconds: 2,
+                          ),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please enter valid Login Details!'),
+                          duration: Duration(
+                            seconds: 2,
+                          ),
+                        ),
+                      );
+                    }
                     print(
                       '${widget.inputData.mobileNumber},${widget.inputData.conformPassword}',
                     );
@@ -127,6 +154,11 @@ class _HomePageState extends State<HomePage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => SignUp1(),
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please enter following data!'),
                           ),
                         );
                       },
