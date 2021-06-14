@@ -287,19 +287,19 @@ class _SurveyState extends State<Survey> {
                               if ((selectRadioButton1 +
                                       selectRadioButton2 +
                                       selectRadioButton3 +
-                                      selectRadioButton4) <=
+                                      selectRadioButton4) ==
                                   8) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Positive(),
+                                    builder: (context) => Negative(),
                                   ),
                                 );
                               } else {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Negative(),
+                                    builder: (context) => Positive(),
                                   ),
                                 );
                               }
