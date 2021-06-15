@@ -1,3 +1,4 @@
+import 'package:curequickly/methods/inputdata.dart';
 import 'package:flutter/material.dart';
 import './survey.dart';
 
@@ -5,6 +6,8 @@ import './survey.dart';
 class Welcome extends StatefulWidget {
   @override
   _WelcomeState createState() => _WelcomeState();
+  InputData inputData = InputData();
+  Welcome({this.inputData});
 }
 
 class _WelcomeState extends State<Welcome> {
