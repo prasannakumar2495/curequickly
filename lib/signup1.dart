@@ -64,7 +64,6 @@ class _SignUp1State extends State<SignUp1> {
                       TextField(
                         cursorColor: Theme.of(context).primaryColor,
                         textAlign: TextAlign.center,
-                        keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
